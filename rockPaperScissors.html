@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<style>
+	body {
+		background-color: black;
+	}
+	p {
+		color: magenta;
+	}
+</style>
+
+<html>
+	<body>
+		<script>
+	function computerPlay() {
+		let move = Math.random()
+		if (move <= .333){
+			return "rock";
+		} 
+		else if(move > .333 && move <= .666) {
+			return "paper";
+		}
+		else{
+			return "scissors";
+		}
+	}
+	function playRPS(){
+		let computerScore = 0;
+		let score = 0;
+		let i = 0;
+		for (i = 0; i < 5; i++) {
+
+		let playerMove = "";
+		while(1) {
+			console.log("Take a shot against the computer in a game of rock, paper, scissors! Enter your choice here: ");
+			playerMove = window.prompt("Your move!").toLowerCase();
+			if((playerMove == "rock") || (playerMove == "paper") || (playerMove == "scissors")){
+				break;
+			}
+			else {
+				console.log("Stop trying to cheat! Please enter a valid move.");
+				console.log(playerMove);
+				continue;
+			}
+		}
+		let computerMove = computerPlay();
+		console.log("the computer selected " + computerMove);
+		if(playerMove == computerMove){
+			console.log("It's a draw!");
+		}
+		else if (playerMove == "scissors" && computerMove == "paper" || playerMove == "rock" && computerMove == "scissors" || playerMove == "paper" && computerMove == "rock") {
+			console.log("You win!");
+			score += 1;
+		}
+		else {
+			console.log("You lose!");
+			computerScore += 1;
+		}
+
+	}
+console.log("the computer won a total of " + computerScore + " games, while you won a total of " + score + ". Thanks for playing!");
+}
+		</script>
+	<div>
+	<!--
+		<button class="playerChoice">Rock</button>
+		<button class="playerChoice">Paper</button>
+		<button class="playerChoice">Scissors</button>
+		-->
+	<p>
+	To play Rock, Paper, Scissors, right click anywhere on the screen, click "inspect element", go to console, then type playRPS()
+	</p>
+	</div>
+	
+	
+	</body>
+</html>
